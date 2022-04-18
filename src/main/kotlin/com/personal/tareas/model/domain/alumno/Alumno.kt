@@ -1,6 +1,6 @@
 package com.personal.tareas.model.domain.alumno
 
-import java.time.LocalDateTime
+import java.time.Instant
 import javax.persistence.*
 
 @Entity
@@ -12,11 +12,11 @@ class Alumno(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id:Long? = null
-    val createdAt = LocalDateTime.now()
-    var updatedAt: LocalDateTime? = null
+    val createdAt = Instant.now()
+    var updatedAt: Instant? = null
 
     @PreUpdate
     fun preUpdate(){
-        updatedAt = LocalDateTime.now()
+        updatedAt = Instant.now()
     }
 }

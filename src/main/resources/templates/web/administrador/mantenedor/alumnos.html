@@ -6,39 +6,76 @@
 </head>
 <body>
 
-<div class="container-fluid">
+<div class="container-fluid" id="container">
     <div class="row">
-        <div class="col-4">
-            <h1 class="bg-danger">Hola mundo</h1>
+        <div class="col-7">
+            <table class="table hover" id="tbl-alumnos">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Rut</th>
+                    <th>Fecha Creado</th>
+                    <th>Fecha Actualizado</th>
+                </tr>
+                </thead>
+                <tbody id="data-alumnos">
+                </tbody>
+            </table>
         </div>
-        <div class="col-4">
-            <h1 class="bg-success">Hola mundo</h1>
-        </div>
-        <div class="col-4">
-            <h1 class="bg-primary">Hola mundo</h1>
+    </div>
+    <button class="btn btn-danger" id="test">Test</button>
+    <a href="#" class="btn btn-success"><i class=""></i>aaaaaaaa</a>
+</div>
+
+
+<!-- MODAL MANTENEDOR -->
+<div class="modal" tabindex="-1" role="dialog" id="modal-test">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">Nombre</label>
+                    <input type="text" class="form-control" name="nombre" id="nombre-alumno" required maxlength="255" data-focus="focus">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Rut</label>
+                    <input type="text" class="form-control" name="rut" id="rut-alumno" required maxlength="255" data-focus="focus">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="btn-cerrar" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="btn-crear">Crear</button>
+                <button type="button" class="btn btn-primary" id="btn-update">Actualizar</button>
+            </div>
         </div>
     </div>
 </div>
+<!-- FIN MODAL MANTENEDOR -->
 
-<div class="row">
-    <div class="col-6">
-        <table class="table table-bordered" id="tbl-alumnos">
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Rut</th>
-            </tr>
-            </thead>
-            <tbody id="data-alumnos">
-            </tbody>
-        </table>
-    </div>
-</div>
 
-<button class="btn btn-danger" id="test">Test</button>
+
 
 <div th:replace="/web/administrador/includes/js"></div>
 <script th:src="@{/js/web/administrador/mantenedor/alumno.js(vjs=20220417)}"></script>
+<script type="x-tmpl-mustache" id="tbl-alumnos-actions">
+                <div class="float-right">
+                    <button type="button" class="btn {{#habilitado}}btn-success{{/habilitado}} {{^habilitado}}btn-warning{{/habilitado}} btn-sm action-habilitado" data-id="{{id}}" data-toggle="tooltip" data-placement="top" title="Habilitar/Desabilitar">
+                        <span class="fa fa-power-off fa-fw"></span>
+                    </button>
+                    <button type="button" class="btn btn-danger btn-sm action-delete" data-id="{{id}}" data-toggle="tooltip" data-placement="top" title="Eliminar marca">
+                        <span class="fa fa-trash fa-fw"></span>
+                    </button>
+                    <button type="button" class="btn btn-primary btn-sm action-edit" data-id="{{id}}" data-toggle="tooltip" data-placement="top" title="Editar marca">
+                        <span class="fa fa-edit fa-fw"></span>
+                    </button>
+                </div>
+    </script>
 </body>
 </html>
