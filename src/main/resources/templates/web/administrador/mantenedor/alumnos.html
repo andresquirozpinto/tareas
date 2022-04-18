@@ -1,10 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <div th:replace="/web/administrador/includes/head"></div>
 </head>
 <body>
-<h1>Hola mundo</h1>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-4">
+            <h1 class="bg-danger">Hola mundo</h1>
+        </div>
+        <div class="col-4">
+            <h1 class="bg-success">Hola mundo</h1>
+        </div>
+        <div class="col-4">
+            <h1 class="bg-primary">Hola mundo</h1>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-6">
+        <table class="table table-bordered" id="tbl-alumnos">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Rut</th>
+            </tr>
+            </thead>
+            <tbody id="data-alumnos">
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<button class="btn btn-danger" id="test">Test</button>
+
+<div th:replace="/web/administrador/includes/js"></div>
+<script th:src="@{/js/web/administrador/mantenedor/alumno.js(vjs=20220417)}"></script>
 </body>
 </html>
